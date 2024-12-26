@@ -1,0 +1,133 @@
+RIDES API DOCUMENTATION
+======================
+
+1. PROJECT STRUCTURE
+-------------------
+/src
+  /routes
+    - users.js (User registration endpoints)
+    - rides.js (Ride management endpoints)
+  /middleware
+    - errorHandler.js (Global error handling)
+  /__tests__
+    - rides.test.js (API tests)
+  - index.js (Main application entry)
+
+2. SETUP & INSTALLATION
+----------------------
+1. Install dependencies:
+   npm install
+
+2. Start development server:
+   npm run dev
+
+3. Run tests:
+   npm test
+
+3. API ENDPOINTS
+---------------
+1. Register User
+   URL: POST /api/users/register
+   Body: {
+     "username": "john_doe",
+     "password": "secure123"
+   }
+
+2. List All Rides
+   URL: GET /api/rides
+   Response: List of rides with basic info (id, distance, fare)
+
+3. Get Ride Details
+   URL: GET /api/rides/:id
+   Response: Detailed ride information including pickup, dropoff, duration
+
+4. TESTING THE API
+-----------------
+Using curl:
+
+1. Register a new user:
+   curl -X POST http://localhost:3000/api/users/register \
+     -H "Content-Type: application/json" \
+     -d '{"username": "testuser", "password": "password123"}'
+
+2. Get all rides:
+   curl http://localhost:3000/api/rides
+
+3. Get specific ride:
+   curl http://localhost:3000/api/rides/1
+
+5. CODE ORGANIZATION
+-------------------
+- Routes are separated by feature (users, rides)
+- Middleware handles cross-cutting concerns
+- Error handling is centralized
+- Tests are organized by feature
+- Mock data is used for demonstration
+
+6. SECURITY FEATURES
+-------------------
+- Password hashing using bcryptjs
+- Input validation for registration
+- Error handling for invalid requests
+- CORS enabled for cross-origin requests
+
+7. DEVELOPMENT PRACTICES
+-----------------------
+- Modular code structure
+- Separate concerns (routing, error handling, business logic)
+- Comprehensive error handling
+- API documentation
+- Test coverage
+- Input validation
+
+8. ERROR HANDLING
+----------------
+The API returns appropriate status codes:
+- 400: Bad Request (invalid input)
+- 404: Not Found
+- 500: Internal Server Error
+
+9. FUTURE IMPROVEMENTS
+---------------------
+1. Add authentication middleware
+2. Implement ride creation endpoint
+3. Add database integration
+4. Add user profile management
+5. Implement ride status updates
+6. Add pagination for rides list
+7. Implement rate limiting
+8. Add request logging
+
+10. DEPENDENCIES
+---------------
+- express: Web framework
+- bcryptjs: Password hashing
+- cors: Cross-origin resource sharing
+- express-validator: Input validation
+- jest: Testing framework
+- supertest: API testing
+- nodemon: Development server
+
+11. QUICK START GUIDE
+--------------------
+1. Clone the repository
+2. Run 'npm install'
+3. Start server with 'npm run dev'
+4. Server runs on http://localhost:3000
+5. Use the API endpoints as documented above
+
+12. TESTING GUIDE
+----------------
+1. Run all tests:
+   npm test
+
+2. Test specific feature:
+   npm test -- rides.test.js
+
+13. MAINTENANCE
+--------------
+- Keep dependencies updated
+- Run tests before deploying
+- Monitor error logs
+- Follow REST API best practices
+- Document API changes
